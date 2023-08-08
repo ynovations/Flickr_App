@@ -1,0 +1,25 @@
+<h1>Welcome to Flickr Photo Viewer!</h1>
+
+<%= form_tag photos_path, method: :get do %>
+  <%= label_tag :flickr_user_id, 'Enter Flickr User ID:' %>
+  <%= text_field_tag :flickr_user_id %>
+  <%= submit_tag 'View Photos' %>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<% if @photos.present? %>
+  <h2>Photos from Flickr User ID: <%= params[:flickr_user_id] %></h2>
+  <ul>
+    <% @photos.each do |photo| %>
+      <li><%= image_tag(Flickr.url(photo)) %></li>
+    <% end %>
+  </ul>
+<% elsif flash[:alert].nil? %>
+  <p>Enter a Flickr User ID to view photos</p>
+<% end %>
+
