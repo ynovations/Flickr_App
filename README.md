@@ -1,6 +1,6 @@
 # README
 
-Give a Flickr User ID, the app lists down all uploaded photos of the user.
+Given a Flickr User ID, the app lists down all uploaded photos of the user.
 
 
 Instructions:
